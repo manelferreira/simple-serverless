@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  postgres:
+    container_name: simple_serverless_pg
+    image: postgres:12.11
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5433:5432"

@@ -1,0 +1,21 @@
+service: simple-serverless
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  environment:
+    DB_DIALECT: 'postgres'
+    DB_NAME: 'simple_sls'
+    DB_USERNAME: 'sls_user'
+    DB_PASSWORD: 'sls_password'
+    DB_HOST: 'localhost'
+    DB_PORT: '5433'
+
+functions:
+  hello:
+    handler: index.handler
+
+plugins:
+  - serverless-offline
+  - serverless-sequelize-migrations
