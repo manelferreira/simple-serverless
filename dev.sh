@@ -20,13 +20,13 @@ export DB_PASSWORD='sls_password'
 cd $CD
 
 function devhelp {
-    echo -e "${GREEN}devhelp${RESTORE}                Imprime este ${RED}guia${RESTORE}"
+    echo -e "${GREEN}devhelp${RESTORE}                Shows this ${RED}guide${RESTORE}"
     echo -e ""     
-    echo -e "${GREEN}start_infra${RESTORE}            Levanta os containers da ${RED}infra${RESTORE}"
+    echo -e "${GREEN}start_infra${RESTORE}            Creates and ${RED}runs PostgreSQL${RESTORE} container using docker-compose"
     echo -e ""     
-    echo -e "${GREEN}db_create${RESTORE}              Cria ${RED}schema inicial${RESTORE} do banco de dados"
+    echo -e "${GREEN}db_create${RESTORE}              Runs a ${RED}SQL script to create a DB${RESTORE} on the PostgreSQL container"
     echo -e ""     
-    echo -e "${GREEN}db_destroy${RESTORE}             Apaga o container do ${RED}banco de dados${RESTORE}"
+    echo -e "${GREEN}db_destroy${RESTORE}             Stops ${RED}and removes PostgreSQL${RESTORE} container"
 }
 
 function start_infra {
