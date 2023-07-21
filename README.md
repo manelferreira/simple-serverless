@@ -1,60 +1,40 @@
-<!--
-title: 'AWS NodeJS Example'
-description: 'This template demonstrates how to deploy a NodeJS function running on AWS Lambda using the traditional Serverless Framework.'
-layout: Doc
-framework: v3
-platform: AWS
-language: nodeJS
-priority: 1
-authorLink: 'https://github.com/serverless'
-authorName: 'Serverless, inc.'
-authorAvatar: 'https://avatars1.githubusercontent.com/u/13742415?s=200&v=4'
--->
+# Simple Serverless
 
-
-# Serverless Framework AWS NodeJS Example
-
-This template demonstrates how to deploy a NodeJS function running on AWS Lambda using the traditional Serverless Framework. The deployed function does not include any event definitions as well as any kind of persistence (database). For more advanced configurations check out the [examples repo](https://github.com/serverless/examples/) which includes integrations with SQS, DynamoDB or examples of functions that are triggered in `cron`-like manner. For details about configuration of specific `events`, please refer to our [documentation](https://www.serverless.com/framework/docs/providers/aws/events/).
+This is a simple serverless project I created to help me in the development of [Serverless sequelize migrations](https://github.com/manelferreira/serverless-sequelize-migrations).
 
 ## Usage
+This is for local development only, and the database environment variables were commited here because there is no need to prepare the project for multiple environments.
 
-### Deployment
-
-In order to deploy the example, you need to run the following command:
-
-```
-$ serverless deploy
-```
-
-After running deploy, you should see output similar to:
-
+### Dev.sh bash
+There is a bash file with some helper functions to setup local environment. To use it, open the terminal on the root directory of the project and run:
 ```bash
-Deploying aws-node-project to stage dev (us-east-1)
-
-✔ Service deployed to stack aws-node-project-dev (112s)
-
-functions:
-  hello: aws-node-project-dev-hello (1.5 kB)
+source dev.sh
+```
+The following functions are currently available:
+```
+start_infra ................... Creates and runs the PostgreSQL container using docker-compose
+db_create ..................... Runs a SQL script to create a DB on the PostgreSQL container
+db_destroy .................... Stops and removes the PostgreSQL container
 ```
 
-### Invocation
 
-After successful deployment, you can invoke the deployed function by using the following command:
-
-```bash
-serverless invoke --function hello
+### Using the serverless sequelize migrations plugin
+There are two options to use the plugin.
+1) Using npm package: 
+```
+In the serverless.yml plugin's section, configure the plugin as: 
+- serverless-sequelize-migrations
 ```
 
-Which should result in response similar to the following:
+2) Using local project: 
+```
+In the serverless.yml plugin's section, configure the plugin as: 
+- ./local_plugins/serverless-sequelize-migrations
 
-```json
-{
-    "statusCode": 200,
-    "body": "{\n  \"message\": \"Go Serverless v3.0! Your function executed successfully!\",\n  \"input\": {}\n}"
-}
+You must also clone the plugins GitHub project on the parent directory of this project. There is a configured symlink pointing to a folder in this location.
 ```
 
-### Local development
+###  Run serverless function locally
 
 You can invoke your function locally by using the following command:
 

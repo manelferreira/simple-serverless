@@ -19,3 +19,5 @@ functions:
 plugins:
   - serverless-offline
   - serverless-sequelize-migrations
+  # - ./local_plugins/serverless-sequelize-migrations
+
