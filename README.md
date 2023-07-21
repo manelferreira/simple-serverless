@@ -31,7 +31,7 @@ In the serverless.yml plugin's section, configure the plugin as:
 In the serverless.yml plugin's section, configure the plugin as: 
 - ./local_plugins/serverless-sequelize-migrations
 
-You must also clone the plugins GitHub project on the parent directory of this project. There is a configured symlink pointing to a folder in this location.
+You must also clone the plugin's GitHub project into this project's parent directory. There is a configured symlink pointing to a folder in this location.
 ```
 
 ###  Run serverless function locally
